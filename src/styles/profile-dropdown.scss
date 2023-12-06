@@ -1,0 +1,30 @@
+.profile-dropdown {
+  position: relative;
+}
+
+/* Style the dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;  /* Position it right below the button */
+  right: 0;   /* Align it to the right edge of the button */
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Style each dropdown item */
+.dropdown-menu li {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+/* Add a hover effect to dropdown items */
+.dropdown-menu li:hover {
+  background-color: #ddd;
+}
+
+.dropdown-menu.show {
+  display: block;
+}

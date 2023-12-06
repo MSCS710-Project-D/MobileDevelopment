@@ -1,0 +1,420 @@
+.restaurant-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 4 columns
+    gap: 20px; // Space between grid items
+    padding: 20px;
+    background-color: #f5f5f5;
+    width: 100%;
+}
+
+.menu-modal {
+    // ... (existing styles)
+
+    h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px; // Increase the font size for better visibility
+        color: #333;    // Darker color for better contrast
+    }
+
+    label {
+        display: block;
+        margin-bottom: 20px; // Increase margin for better spacing
+
+        input {
+            display: block;
+            width: 80%; // Reduce the width to 80% to prevent overlap
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+    }
+}
+
+.edit-button {
+    margin-right: 10px;
+}
+
+.delete-button {
+    margin-left: 10px; 
+}
+
+
+.restaurant-pane {
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .restaurant-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .restaurant-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .restaurant-description {
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    .restaurant-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        color: #555;
+
+        .restaurant-address,
+        .restaurant-phone {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .icon {
+            font-size: 16px;
+            color: #888;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .restaurant-container {
+        grid-template-columns: repeat(3, 1fr); // 3 columns for medium screens
+    }
+}
+
+@media (max-width: 768px) {
+    .restaurant-container {
+        grid-template-columns: repeat(2, 1fr); // 2 columns for smaller screens
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurant-container {
+        grid-template-columns: 1fr; // 1 column for very small screens
+    }
+}
+
+@media (max-width: 768px) {
+    .restaurant-pane {
+        // flex-basis: calc(50% - 20px);
+       
+        // max-width: calc(50% - 20px);
+        width: 90%;
+    }
+}
+
+.menu-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-modal {
+    background-color: #fff;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px; // Increase the font size for better visibility
+        color: #333;    // Darker color for better contrast
+    }
+
+    button.close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e43f4d;
+        color: #fff;
+        font-size: 18px;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 10;
+
+        &:hover {
+            background-color: #c02c3a;
+        }
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button.submit {
+        @extend .add-to-cart-button;
+    }
+}
+
+.add-to-cart-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    line-height: 1.5;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+.menu-item-list {
+    max-height: 400px; /* Adjust this value based on your needs */
+    overflow-y: auto;
+}
+
+.menu-item-image img {
+    max-width: 100%; /* Set the maximum width of the image to fit its container */
+    max-height: 150px; /* Set the maximum height of the image to your desired size */
+    display: block; /* Ensure the image behaves as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.menu-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+
+    .menu-item-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 20px;
+        border-radius: 10px;
+    }
+
+    .menu-item-info {
+        h3 {
+            margin: 0;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    }
+
+    .add-to-cart-button {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.menu-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+
+    img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+        padding: 5px 10px;
+        border: none;
+        background-color: #f5f5f5;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    span {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+}
+
+.add-menu-item-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.add-menu-item-dialog {
+    background-color: #fff;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px; // Increase the font size for better visibility
+        color: #333;    // Darker color for better contrast
+    }
+
+    label {
+        display: block;
+        margin-bottom: 20px; // Increase margin for better spacing
+
+        input {
+            display: block;
+            width: 80%; // Reduce the width to 80% to match the edit modal
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:last-of-type {
+            margin-top: 20px;
+        }
+    }
+}
+
+/* Add Menu Item Button */
+.add-menu-item-button {
+    background: linear-gradient(45deg, #FF5733, #FFC300);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.add-menu-item-button:hover {
+    transform: scale(1.05);
+}
+
+/* Edit Button */
+.edit-button {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; // Add some margin to separate it from the delete button
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+/* Delete Button */
+.delete-button {
+    background-color: #f44336;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 10px; // Add some margin to separate it from the edit button
+}
+
+.delete-button:hover {
+    background-color: #da190b;
+}
+
+/* Search by ID Button */
+.search-id-button {
+    background-color: #2196F3;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-id-button:hover {
+    background-color: #0b7dda;
+}
+
