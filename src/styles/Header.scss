@@ -1,0 +1,29 @@
+/* Header Styles */
+.header {
+    background-color: #3498db; /* Background color for the header */
+    color: #fff; /* Text color for header elements */
+    padding: 0; /* Remove padding to eliminate whitespace */
+    margin: 0; /* Ensure no margin for the header */
+}
+
+/* Styles for Header Text (Typography) */
+.header h6 {
+    font-size: 24px; /* Adjust font size as needed */
+    margin: 0; /* Ensure no margin for header text */
+    padding: 10px; /* You can adjust padding here if you want some spacing within the header */
+}
+
+/* Styles for Header Buttons */
+.header button {
+    background-color: #2ecc71; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 8px 16px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0; /* Ensure no margin for buttons */
+}
+
+.content-below-header {
+    margin-top: 0; /* Ensure content starts right below the header */
+}
